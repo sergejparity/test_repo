@@ -1,0 +1,30 @@
+name: Check publish
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths-ignore:
+      - **/*.md
+
+jobs:
+  check-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@a95ba195448af2da9b00fb742d14ffaaf3c21f43 # v2.7.0
+
+      - name: Print versions
+        run: |
+          rustc --version
+          cargo --version
+
+      - name: install parity-publish
+        run: cargo install parity-publish --profile dev
+
+    #   - name: parity-publish check
+    #     run: parity-publish check --allow-unpublished
