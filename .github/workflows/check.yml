@@ -26,7 +26,8 @@ jobs:
 
     runs-on: ubuntu-latest
     container:
-      image: ${{ needs.setimage.outputs.image }}
+      image: ${{ env.IMAGE }}
+      # image: ${{ needs.setimage.outputs.image }}
     steps:
       - name: ls before checkout
         run: |
@@ -37,8 +38,8 @@ jobs:
           rustc --version
           cargo --version
 
-      - name: install parity-publish
-        run: cargo install parity-publish --profile dev
+      # - name: install parity-publish
+      #   run: cargo install parity-publish --profile dev
 
     #   - name: parity-publish check
     #     run: parity-publish check --allow-unpublished
