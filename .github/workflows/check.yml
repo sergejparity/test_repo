@@ -1,5 +1,8 @@
 name: Check publish
 
+env:
+  IMAGE: alpine
+
 on:
   push:
     branches:
@@ -10,21 +13,24 @@ on:
       - '**/*.md'
 
 jobs:
-  check-publish:
+  setimage:
     runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.set_image.outputs.IMAGE }}
+    steps:
+    - id: set_image
+      run: echo "IMAGE=alpine" >> $GITHUB_OUTPUT
+
+
+  check-publish:
+
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ needs.setimage.outputs.image }}
     steps:
       - name: ls before checkout
         run: |
-          ls -al
-
-      - name: Rust Cache
-        uses: Swatinem/rust-cache@a95ba195448af2da9b00fb742d14ffaaf3c21f43 # v2.7.0
-
-      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0  s
-
-      - name: ls after checkout
-        run: |
-          ls -al
+          echo ${{ env.IMAGE }}
 
       - name: Print versions
         run: |
