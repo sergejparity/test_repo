@@ -16,7 +16,7 @@ jobs:
   setimage:
     runs-on: ubuntu-latest
     outputs:
-      image: ${{ steps.set_image.outputs.IMAGE }}
+      IMAGE: ${{ steps.set_image.outputs.IMAGE }}
     steps:
     - id: set_image
       run: echo "IMAGE=${{ env.IMAGE }}" >> $GITHUB_OUTPUT
