@@ -25,9 +25,10 @@ jobs:
   check-publish:
 
     runs-on: ubuntu-latest
+    needs: [setimage]
     container:
-      image: alpine
-      # image: ${{ needs.setimage.outputs.image }}
+      # image: alpine
+      image: ${{ needs.setimage.outputs.image }}
     steps:
       - name: ls before checkout
         run: |
