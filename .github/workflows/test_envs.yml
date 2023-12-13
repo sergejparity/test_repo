@@ -1,0 +1,21 @@
+name: Test environments
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-env:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: Run tests
+        run: |
+          echo "Hello world!"
+
+  test-env2:
+      runs-on: ubuntu-latest
+      environment: test2
+      steps:
+        - name: Run tests
+          run: |
+            echo "Hello world!"
