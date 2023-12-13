@@ -18,6 +18,9 @@ jobs:
   test-env2:
       runs-on: ubuntu-latest
       environment: test2
+      env:
+        ENV_SECRET1: ${{ secrets.ENV_SECRET1 }}
+        ENV_VARIABLE: ${{ vars.ENV_VARIABLE }}
       steps:
 
         - name: Run tests
