@@ -8,14 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     steps:
+
       - name: Run tests
         run: |
           echo "Hello world!"
+          echo "Access env SECRET: $ENV_SECRET1"
+          echo "Access env variable: $ENV_VARIABLE"
 
   test-env2:
       runs-on: ubuntu-latest
       environment: test2
       steps:
+
         - name: Run tests
           run: |
             echo "Hello world!"
+            echo "Access env SECRET: $ENV_SECRET1"
+            echo "Access env variable: $ENV_VARIABLE"
