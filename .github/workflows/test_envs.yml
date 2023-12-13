@@ -12,8 +12,8 @@ jobs:
       - name: Run tests
         run: |
           echo "Hello world!"
-          echo "Access env SECRET: $ENV_SECRET1"
-          echo "Access env variable: $ENV_VARIABLE"
+          echo "Access env SECRET BASH WAY: $ENV_SECRET1 or GHA WAY ${{ env.ENV_SECRET1 }}"
+          echo "Access env variable BASH WAY: $ENV_VARIABLE or GHA WAY ${{ env.ENV_VARIABLE }}"
 
   test-env2:
       runs-on: ubuntu-latest
@@ -23,5 +23,5 @@ jobs:
         - name: Run tests
           run: |
             echo "Hello world!"
-            echo "Access env SECRET: $ENV_SECRET1"
-            echo "Access env variable: $ENV_VARIABLE"
+            echo "Access env SECRET BASH WAY: $ENV_SECRET1 or GHA WAY ${{ env.ENV_SECRET1 }}"
+            echo "Access env variable BASH WAY: $ENV_VARIABLE or GHA WAY ${{ env.ENV_VARIABLE }}"
