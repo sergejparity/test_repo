@@ -13,10 +13,10 @@ jobs:
   check-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.0.0
 
       - name: Rust Cache
-        uses: Swatinem/rust-cache@v2.7.1
+        uses: Swatinem/rust-cache@v2.6.0
 
       - name: Print versions
         run: |
